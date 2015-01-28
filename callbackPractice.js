@@ -22,7 +22,9 @@ and what you should write is the favNum function that makes the code above work,
     
 */
 
-
+var first = function(arr,cb){
+  cb(arr[0]);
+}
 
   //Code Here for first
   
@@ -37,7 +39,9 @@ first(names, function(firstName){
 
 
 
-
+var last = function(arr,cb){
+  cb(arr[arr.length-1]);
+}
   //Code Here for last
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -54,7 +58,9 @@ last(names, function(lastName){
 
 
 
-
+var multiply = function(n1,n2,cb){
+  cb(n1*n2);
+}
 
   //Code Here for multiply
 
@@ -71,7 +77,10 @@ multiply(4, 3, function(answer){
 
 
 
-
+var contains = function(arr,str,cb){
+  //cb(arr.indexOf(str)===-1?false:true)
+    cb(arr.indexOf(str)!==-1);
+}
   //Code Here for contains
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -93,6 +102,15 @@ contains(names, 'Colt', function(result){
 
 
     //Code Here for uniq
+var uniq = function(arr,cb){
+  var res=[];
+  arr.forEach(function(item){
+    if(res.indexOf(item) < 0){
+      res.push(item);
+    }
+  });
+  cb(res.join(','));
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -107,7 +125,11 @@ uniq(names, function(uniqArr){
 
 
 
-
+var each = function(arr,cb){
+  for(var i = 0; i < arr.length; i++){
+    cb(arr[i],i);
+  }
+}
     //Code Here for each
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -124,7 +146,14 @@ each(names, function(item, indice){
 
 
 
-
+var getUserById = function(arrObj,id,cb){
+  for(var key in arrObj){
+    if(arrObj[key].id === id){
+      cb(arrObj[key]);
+      break;
+    }
+  }
+}
  //code here for getUserById
 
 var users = [
